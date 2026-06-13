@@ -2,12 +2,10 @@ const express = require("express");
 
 const app = express();
 
-// Middleware
+const employeeRoutes = require("./routes/employeeRoutes");
+
 app.use(express.json());
 
-// Test Route
-app.get("/admin", (req, res) => {
-    res.send("Employee Management API Running...");
-});
+app.use("/api/employees", employeeRoutes);
 
 module.exports = app;
