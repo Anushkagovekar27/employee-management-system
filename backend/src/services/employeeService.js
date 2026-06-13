@@ -7,7 +7,15 @@ const createEmployee = async (employeeData) => {
     return employee;
 
 };
+const getAllEmployees = async () => {
+
+    const employees = await Employee.find();
+
+    return employees;
+};
 
 module.exports = {
-    createEmployee
+    createEmployee,
+    getAllEmployees
+
 };
