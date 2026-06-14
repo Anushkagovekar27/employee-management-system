@@ -74,9 +74,42 @@ const updateEmployee = async (req, res) => {
     }
 
 };
+const deleteEmployee = async (req, res) => {
+
+    try {
+
+        const deletedEmployee = await employeeService.deleteEmployee(
+            req.params.id
+        );
+
+        if (!deletedEmployee) {
+
+            return res.status(404).json({
+                success: false,
+                message: "Employee not found"
+            });
+
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Employee deleted successfully"
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+
+    }
+
+};
 
 module.exports = {
     createEmployee,
     getAllEmployees,
-    updateEmployee
+    updateEmployee,
+    deleteEmployee
 };

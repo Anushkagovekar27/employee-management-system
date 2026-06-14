@@ -26,10 +26,17 @@ const updateEmployee = async (id, employeeData) => {
 
     return updatedEmployee;
 };
+const deleteEmployee = async (id) => {
+
+    const deletedEmployee = await Employee.findByIdAndDelete(id);
+
+    return deletedEmployee;
+
+};
 
 module.exports = {
     createEmployee,
     getAllEmployees,
-    updateEmployee
-
+    updateEmployee,
+    deleteEmployee
 };
