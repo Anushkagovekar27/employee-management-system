@@ -39,4 +39,5 @@ module.exports = {
     getAllEmployees,
     updateEmployee,
     deleteEmployee
+
 };
