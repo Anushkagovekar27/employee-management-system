@@ -42,8 +42,41 @@ const getAllEmployees = async (req, res) => {
     }
 
 };
+const updateEmployee = async (req, res) => {
+
+    try {
+
+        const updatedEmployee = await employeeService.updateEmployee(
+            req.params.id,
+            req.body
+        );
+
+        if (!updatedEmployee) {
+            return res.status(404).json({
+                success: false,
+                message: "Employee not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Employee updated successfully",
+            data: updatedEmployee
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+
+    }
+
+};
 
 module.exports = {
     createEmployee,
-    getAllEmployees
+    getAllEmployees,
+    updateEmployee
 };

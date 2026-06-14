@@ -13,9 +13,23 @@ const getAllEmployees = async () => {
 
     return employees;
 };
+const updateEmployee = async (id, employeeData) => {
+
+    const updatedEmployee = await Employee.findByIdAndUpdate(
+        id,
+        employeeData,
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+
+    return updatedEmployee;
+};
 
 module.exports = {
     createEmployee,
-    getAllEmployees
+    getAllEmployees,
+    updateEmployee
 
 };
